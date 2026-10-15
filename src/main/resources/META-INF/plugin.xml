@@ -1,0 +1,38 @@
+<idea-plugin>
+    <id>dev.oreo.ow</id>
+    <name>Ow Language</name>
+    <vendor url="https://github.com/OW-Programing-Language">Oreo Studios</vendor>
+
+    <description><![CDATA[
+        Language support for the <b>Ow</b> programming language (<code>.ow</code> files):
+        file-type recognition with the Ow icon, syntax highlighting, and a
+        <b>Run .ow File</b> action that invokes the installed <code>ow</code> command.
+        <br/><br/>
+        Requires the Ow toolchain on your PATH — see
+        <a href="https://github.com/OW-Programing-Language/ow-lang">ow-lang</a>.
+    ]]></description>
+
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <fileType
+            name="Ow file"
+            implementationClass="dev.oreo.owplugin.OwFileType"
+            fieldName="INSTANCE"
+            language="Ow"
+            extensions="ow"/>
+        <lang.syntaxHighlighterFactory
+            language="Ow"
+            implementationClass="dev.oreo.owplugin.OwSyntaxHighlighterFactory"/>
+    </extensions>
+
+    <actions>
+        <action id="dev.oreo.ow.RunOwFile"
+                class="dev.oreo.owplugin.RunOwFileAction"
+                text="Run .ow File"
+                description="Run the current Ow file with the installed `ow` command">
+            <add-to-group group-id="RunContextGroup" anchor="first"/>
+            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+        </action>
+    </actions>
+</idea-plugin>
