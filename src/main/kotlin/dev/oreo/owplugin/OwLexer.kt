@@ -85,7 +85,7 @@ class OwLexer : LexerBase() {
             "main", "set", "print", "if", "else", "while", "fn", "return", "call",
             "switch", "case", "default", "enum", "interface", "class", "field", "model",
             "new", "this", "private", "public", "save", "find", "delete", "where",
-            "route", "respond", "serve", "true", "false"
+            "route", "respond", "serve", "import", "true", "false"
         )
     }
 }
