@@ -37,6 +37,11 @@ tasks {
         targetCompatibility = "17"
     }
 
+    // Binary-compatibility check against a range of real IDE builds.
+    runPluginVerifier {
+        ideVersions.set(listOf("IC-2023.3.6", "IC-2024.1.7", "IC-2024.3.5", "IC-2025.1"))
+    }
+
     // Set these in CI to publish to the JetBrains Marketplace.
     publishPlugin {
         token.set(System.getenv("PUBLISH_TOKEN") ?: "")
