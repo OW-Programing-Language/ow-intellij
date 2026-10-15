@@ -1,5 +1,7 @@
 # Ow Language — IntelliJ IDEA plugin
 
+[![Build plugin](https://github.com/OW-Programing-Language/ow-intellij/actions/workflows/build.yml/badge.svg)](https://github.com/OW-Programing-Language/ow-intellij/actions/workflows/build.yml)
+
 Language support for the [Ow programming language](https://github.com/OW-Programing-Language/ow-lang) in IntelliJ IDEA (and other JetBrains IDEs):
 
 - **`.ow` file type** with the Ow icon
