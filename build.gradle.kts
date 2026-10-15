@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "dev.oreo"
-version = "0.1.0"
+version = "0.1.1"
 
 repositories {
     mavenCentral()
@@ -21,7 +21,9 @@ intellij {
 tasks {
     patchPluginXml {
         sinceBuild.set("233")
-        untilBuild.set("243.*")
+        // No upper bound: the plugin only uses stable platform APIs, so it keeps
+        // working on newer IDEs (2024.x, 2025.x, 2026.x, …).
+        untilBuild.set(provider { null })
     }
 
     compileKotlin {
