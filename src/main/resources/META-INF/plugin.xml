@@ -8,9 +8,11 @@
         file-type recognition with the Ow icon, syntax highlighting (keywords,
         the module system, built-in functions including the dictionary/map
         builtins, strings, numbers, operators and comments), and a
-        <b>Run .ow File</b> action that invokes the installed <code>ow</code> command.
+        <b>Run .ow File</b> action.
         <br/><br/>
-        Requires the Ow toolchain on your PATH — see
+        <b>The Ow runtime is bundled</b> — the Run action works out of the box using
+        the IDE's own Java, so you don't have to install Ow separately. If you do
+        have <code>ow</code> on your PATH, that install is used instead. See
         <a href="https://github.com/OW-Programing-Language/ow-lang">ow-lang</a>.
     ]]></description>
 

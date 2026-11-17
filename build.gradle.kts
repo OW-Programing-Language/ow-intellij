@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "dev.oreo"
-version = "0.1.4"
+version = "0.1.5"
 
 repositories {
     mavenCentral()
@@ -18,7 +18,29 @@ intellij {
     plugins.set(listOf())
 }
 
+// The Ow runtime (shaded OwIDE.jar) is bundled into the plugin so installing the
+// plugin gives a working Ow with no separate install — run via the IDE's JBR.
+// Keep this version in sync with OwRuntime.VERSION.
+val owRuntimeVersion = "1.2.3"
+
 tasks {
+    val downloadOwRuntime by registering {
+        val out = layout.buildDirectory.file("ow-runtime/OwIDE.jar")
+        outputs.file(out)
+        doLast {
+            val jar = out.get().asFile
+            if (!jar.exists() || jar.length() == 0L) {
+                jar.parentFile.mkdirs()
+                val url = "https://github.com/OW-Programing-Language/ow-lang/releases/download/v$owRuntimeVersion/OwIDE.jar"
+                uri(url).toURL().openStream().use { input -> jar.outputStream().use { input.copyTo(it) } }
+            }
+        }
+    }
+
+    processResources {
+        from(downloadOwRuntime) { into("ow") }
+    }
+
     patchPluginXml {
         sinceBuild.set("233")
         // No upper bound: the plugin only uses stable platform APIs, so it keeps

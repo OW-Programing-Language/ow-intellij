@@ -10,7 +10,6 @@ import com.intellij.openapi.progress.ProgressIndicator
 import com.intellij.openapi.progress.Task
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.ui.Messages
-import java.io.File
 
 /**
  * Runs the current .ow file with the installed `ow` command and shows its output.
@@ -34,7 +33,8 @@ class RunOwFileAction : AnAction() {
         val name = file.name
         val workDir = file.parent?.path
 
-        val cmd = GeneralCommandLine(resolveOw(), "run", path).apply {
+        // Prefer a user `ow` on PATH; otherwise the bundled runtime via the IDE's Java.
+        val cmd = GeneralCommandLine(OwRuntime.command() + listOf("run", path)).apply {
             if (workDir != null) withWorkDirectory(workDir)
         }
 
@@ -50,29 +50,11 @@ class RunOwFileAction : AnAction() {
                         text.ifEmpty { "(no output)" })
                 } catch (ex: Exception) {
                     showError(project,
-                        "Could not run the 'ow' command. Make sure Ow is installed and on your PATH.\n\n${ex.message}")
+                        "Could not run Ow. The runtime is bundled with the plugin and runs " +
+                        "on the IDE's Java, so this usually means the file could not be launched.\n\n${ex.message}")
                 }
             }
         }.queue()
-    }
-
-    /**
-     * Finds the Ow launcher on PATH, supporting both the native install
-     * (`ow.exe`) and the portable JDK distribution (`ow.bat`). Falls back to a
-     * bare name and lets the OS resolve it.
-     */
-    private fun resolveOw(): String {
-        val win = System.getProperty("os.name").lowercase().contains("win")
-        val candidates = if (win) listOf("ow.exe", "ow.cmd", "ow.bat", "ow") else listOf("ow")
-        val path = System.getenv("PATH") ?: ""
-        for (dir in path.split(File.pathSeparator)) {
-            if (dir.isBlank()) continue
-            for (c in candidates) {
-                val f = File(dir, c)
-                if (f.isFile) return f.absolutePath
-            }
-        }
-        return if (win) "ow.exe" else "ow"
     }
 
     private fun showInfo(project: Project, title: String, message: String) {
