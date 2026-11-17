@@ -16,23 +16,37 @@ Language support for the [Ow programming language](https://github.com/OW-Program
 
 ## Installation
 
-You don't need the source — install the pre-built plugin:
+Install the plugin, restart the IDE — **that's it. Ow installs with it.** You do
+**not** download or set up the Ow language separately: the Ow runtime is bundled
+inside the plugin and runs on the IDE's own Java.
 
-### Option A — from a GitHub release (available now)
+You don't need the source code either — just the pre-built plugin.
 
-1. Go to [**Releases**](https://github.com/OW-Programing-Language/ow-intellij/releases)
-   and download the latest `ow-intellij-<version>.zip`.
-2. In your JetBrains IDE: **Settings/Preferences → Plugins → ⚙ (gear icon) →
+### Option A — from the JetBrains Marketplace (easiest, once published)
+
+1. In your IDE: **Settings/Preferences → Plugins → Marketplace**.
+2. Search **"Ow Language"**.
+3. Click **Install**, then **Restart** the IDE.
+
+That's the whole thing. You also get automatic updates.
+
+### Option B — from a GitHub release (the `.zip`, available now)
+
+1. Download the latest **`ow-intellij-<version>.zip`** from
+   [**Releases**](https://github.com/OW-Programing-Language/ow-intellij/releases).
+2. In your IDE: **Settings/Preferences → Plugins → ⚙ (gear icon) →
    Install Plugin from Disk…**
-3. Select the downloaded `.zip` and click **OK**, then **Restart** the IDE.
+3. Pick the `.zip`, click **OK**, then **Restart** the IDE.
 
-### Option B — from the JetBrains Marketplace
+### Do I need to install Ow separately?
 
-Once published: **Settings → Plugins → Marketplace**, search **"Ow Language"**,
-click **Install**. (Marketplace publishing is a one-time, account-gated step.)
+**No.** The plugin ships the Ow runtime (`OwIDE.jar`) and runs it with the IDE's
+bundled Java, so **Run .ow File works right after you restart** — nothing else to
+download, no PATH setup, no Java install. (If you *do* have the `ow` CLI on your
+PATH, the plugin uses that instead.)
 
 > Works in IntelliJ IDEA (Community or Ultimate) and other JetBrains IDEs
-> (PyCharm, WebStorm, etc.) on build 2023.3 and newer.
+> (PyCharm, WebStorm, Rider, etc.) on build 2023.3 and newer.
 
 ## Usage
 
