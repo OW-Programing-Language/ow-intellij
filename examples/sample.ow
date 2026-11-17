@@ -100,3 +100,15 @@ main:
       print: "two or three"
     default:
       print: "many"
+
+  print: "== dictionaries (maps) =="
+  set sprites: {
+    "Blaze": "hostile/blaze.gif",
+    "Magma Cube": "hostile/magmacube.png",
+    "Zombie": "hostile/zombie.png"
+  }
+  set sprites["Creeper"]: "hostile/creeper.png"
+  print: map_get(sprites, "Magma Cube", "hostile/zombie.png")
+  print: map_get(sprites, "Herobrine", "hostile/zombie.png")
+  print: map_has(sprites, "Creeper")
+  print: map_size(sprites)
