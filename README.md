@@ -76,11 +76,31 @@ IntelliJ Platform SDK on first run).
 
 Install the built zip via **Settings → Plugins → ⚙ → Install Plugin from Disk…**
 
-## Publishing
+## Publishing to the JetBrains Marketplace
 
-CI can publish to the JetBrains Marketplace with `./gradlew publishPlugin`
-(set the `PUBLISH_TOKEN` environment variable). Marketplace publishing is a
-manual, account-gated step — it is not done automatically.
+CI publishes automatically on every version tag (`v*`) via the
+`publish-marketplace` job — **but only once a `PUBLISH_TOKEN` secret is set**
+(otherwise the publish step is skipped and tags still produce a GitHub release).
+
+One-time setup:
+
+1. **Create a vendor account** at <https://plugins.jetbrains.com> and sign in.
+2. **First upload (manual, required once):** build the zip locally
+   (`./gradlew buildPlugin` → `build/distributions/ow-intellij-<version>.zip`)
+   and upload it at <https://plugins.jetbrains.com/plugin/add>. JetBrains
+   **moderates the first submission** (usually 1–2 business days) before the
+   plugin is publicly listed. This also registers the plugin id `dev.oreo.ow`.
+3. **Create a permanent token** at
+   <https://plugins.jetbrains.com/author/me/tokens>.
+4. In the repo: **Settings → Secrets and variables → Actions → New repository
+   secret**, name it **`PUBLISH_TOKEN`**, paste the token.
+
+After that, every `vX.Y.Z` tag builds the plugin and publishes the new version to
+the Marketplace automatically (`./gradlew publishPlugin`). Users then install it
+from **Settings → Plugins → Marketplace** (search “Ow Language”) with automatic
+updates.
+
+To publish locally instead: `PUBLISH_TOKEN=<token> ./gradlew publishPlugin`.
 
 ## License
 
