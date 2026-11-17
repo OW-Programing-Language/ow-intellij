@@ -5,7 +5,9 @@
 
     <description><![CDATA[
         Language support for the <b>Ow</b> programming language (<code>.ow</code> files):
-        file-type recognition with the Ow icon, syntax highlighting, and a
+        file-type recognition with the Ow icon, syntax highlighting (keywords,
+        the module system, built-in functions including the dictionary/map
+        builtins, strings, numbers, operators and comments), and a
         <b>Run .ow File</b> action that invokes the installed <code>ow</code> command.
         <br/><br/>
         Requires the Ow toolchain on your PATH — see

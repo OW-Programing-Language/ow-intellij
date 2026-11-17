@@ -5,7 +5,10 @@
 Language support for the [Ow programming language](https://github.com/OW-Programing-Language/ow-lang) in IntelliJ IDEA (and other JetBrains IDEs):
 
 - **`.ow` file type** with the Ow icon
-- **Syntax highlighting** (keywords, strings, numbers, comments)
+- **Syntax highlighting** — keywords (incl. the module system), **built-in functions**
+  (string/math/JSON/UI/audio and the **dictionary/map** builtins `map_get`,
+  `map_has`, `map_set`, `map_delete`, `map_keys`, `map_values`, `map_size`),
+  strings, numbers (including floats), operators and comments
 - **Run .ow File** action — runs the current file with the installed `ow` command (right‑click or the Run context menu)
 
 ![logo](logo.png)

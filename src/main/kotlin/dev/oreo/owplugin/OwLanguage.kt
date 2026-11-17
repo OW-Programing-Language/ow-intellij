@@ -27,6 +27,8 @@ object OwTokens {
     val STRING = OwTokenType("OW_STRING")
     val NUMBER = OwTokenType("OW_NUMBER")
     val COMMENT = OwTokenType("OW_COMMENT")
+    val BUILTIN = OwTokenType("OW_BUILTIN")
+    val OPERATOR = OwTokenType("OW_OPERATOR")
     val IDENT = OwTokenType("OW_IDENT")
     val OTHER = OwTokenType("OW_OTHER")
 }
