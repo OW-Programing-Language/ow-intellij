@@ -14,6 +14,45 @@ Language support for the [Ow programming language](https://github.com/OW-Program
 
 ![logo](logo.png)
 
+## Installation
+
+You don't need the source — install the pre-built plugin:
+
+### Option A — from a GitHub release (available now)
+
+1. Go to [**Releases**](https://github.com/OW-Programing-Language/ow-intellij/releases)
+   and download the latest `ow-intellij-<version>.zip`.
+2. In your JetBrains IDE: **Settings/Preferences → Plugins → ⚙ (gear icon) →
+   Install Plugin from Disk…**
+3. Select the downloaded `.zip` and click **OK**, then **Restart** the IDE.
+
+### Option B — from the JetBrains Marketplace
+
+Once published: **Settings → Plugins → Marketplace**, search **"Ow Language"**,
+click **Install**. (Marketplace publishing is a one-time, account-gated step.)
+
+> Works in IntelliJ IDEA (Community or Ultimate) and other JetBrains IDEs
+> (PyCharm, WebStorm, etc.) on build 2023.3 and newer.
+
+## Usage
+
+1. Open or create a file with the **`.ow`** extension — it gets the Ow icon and
+   full syntax highlighting automatically.
+2. To run it, **right-click in the editor → “Run .ow File”** (also in the Run
+   context menu). Output appears in a dialog.
+   - The Ow runtime is **bundled**, so this works immediately — no Ow or Java to
+     install. A long-running `serve:` web app blocks until it exits; run those
+     from a terminal instead.
+
+```ow
+# hello.ow
+main:
+  set sprites: { "Blaze": "hostile/blaze.gif", "Magma Cube": "hostile/magmacube.png" }
+  print: map_get(sprites, "Magma Cube", "hostile/zombie.png")
+```
+
+Right-click → **Run .ow File** prints `hostile/magmacube.png`.
+
 ## Requirements
 
 **None for running** — the Ow runtime (`OwIDE.jar`) is bundled with the plugin and
